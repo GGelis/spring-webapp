@@ -36,12 +36,6 @@ public class Client extends GenericModel<Integer> implements Serializable
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Past
 	private Date signDate;
-	
-	public Client()
-	{
-		id = -1;
-		age = null;
-	}
 
 	@Override
 	public Integer getId()

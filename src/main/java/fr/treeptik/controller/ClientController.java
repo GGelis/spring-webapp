@@ -25,10 +25,20 @@ public class ClientController
 	ClientValidator clientValidator;
 	
 	@RequestMapping(value = "/init.do", method = RequestMethod.GET)
-	public ModelAndView initForm()
+	public ModelAndView initForm(Client client) throws ServiceException
 	{
 		ModelAndView mv = new ModelAndView("client");
-		Client client = new Client();
+		
+		if(client.getId() == null)
+		{
+			client = new Client();
+		}
+		
+		else
+		{
+			client = clientService.findById(client.getId());
+		}
+
 		mv.addObject("client",client);
 		return mv;
 	}
@@ -41,7 +51,10 @@ public class ClientController
 		if(result.hasErrors())
 			return new ModelAndView("client", "client", client);
 
-		client = clientService.save(client);
+		if(client.getId() != null)
+			client = clientService.update(client);
+		else
+			client = clientService.save(client);
 
 		ModelAndView mv = new ModelAndView("client-created", "client", client);
 		return mv;
