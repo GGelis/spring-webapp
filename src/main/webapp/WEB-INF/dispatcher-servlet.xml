@@ -72,7 +72,7 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
-				<value>message</value>
+				<value>i18n/messages</value>
 			</list>
 		</property>
 		<property name="fallbackToSystemLocale" value="false" />
