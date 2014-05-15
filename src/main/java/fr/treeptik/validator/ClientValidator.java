@@ -22,7 +22,7 @@ public class ClientValidator implements Validator
 		Client testedClient = (Client) client;
 		
 		if(testedClient.getAge() < 0)
-			errors.rejectValue("error.client.age","Must be > 0");
+			errors.rejectValue("age","error.client.age");
 	}
 	
 }
