@@ -1,5 +1,8 @@
 package fr.treeptik.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +32,12 @@ public class ClientController
 	{
 		ModelAndView mv = new ModelAndView("client");
 		
+		boolean isUpdate = true;
+		
 		if(client.getId() == null)
 		{
 			client = new Client();
+			isUpdate = false;
 		}
 		
 		else
@@ -40,6 +46,7 @@ public class ClientController
 		}
 
 		mv.addObject("client",client);
+		mv.addObject("isUpdate", isUpdate);
 		return mv;
 	}
 	
@@ -52,11 +59,20 @@ public class ClientController
 			return new ModelAndView("client", "client", client);
 
 		if(client.getId() != null)
+		{
 			client = clientService.update(client);
+		}
+		
 		else
+		{
 			client = clientService.save(client);
+		}
+		
+		Map<String, Object> mvItems = new HashMap<>();
+		mvItems.put("client", client);
 
-		ModelAndView mv = new ModelAndView("client-created", "client", client);
+		ModelAndView mv = new ModelAndView("client-created");
+		mv.addAllObjects(mvItems);
 		return mv;
 	}
 	

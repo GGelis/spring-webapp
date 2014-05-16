@@ -9,7 +9,7 @@
 	<properties>
 		<version.java>1.7</version.java>
 		<spring.version>3.2.3.RELEASE</spring.version>
-		<spring.security>3.1.4.RELEASE</spring.security>
+		<spring.security>3.2.3.RELEASE</spring.security>
 		<easymock.version>3.2</easymock.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
@@ -21,6 +21,8 @@
 	</properties>
 
 	<dependencies>
+
+
 
 		<!-- Spring all dependencies -->
 		<dependency>
@@ -114,6 +116,36 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
